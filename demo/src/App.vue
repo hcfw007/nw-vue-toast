@@ -11,7 +11,7 @@ export default {
     },
     methods: {
         show() {
-            this.$toast("show")
+            this.$toast("Demo Toast")
         }
     }
 }
