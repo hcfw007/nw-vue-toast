@@ -32,6 +32,9 @@ export default {
       document.body.appendChild(container)
     }
     container.appendChild(this.$el)
+    setTimeout(() => {
+      container.removeChild(this.$el)
+    },  this.time)
   },
   computed: {
     classObj() {
@@ -63,9 +66,19 @@ export default {
   color: black
   padding: 10px 20px
   position: absolute
-  .bottom
-    bottom: 10%
-  .top
-    top: 10%
+  width: 20%
+  &.center
+    left: 0
+    right: 0
+  &.left
+    left: 0
+    right: 50%
+  &.right
+    left: 50%
+    right: 0
+  &.bottom
+    bottom: 15%
+  &.top
+    top: 15%
 </style>
 
