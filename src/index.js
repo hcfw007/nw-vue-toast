@@ -26,6 +26,7 @@ const ToastPlugin = {
       options.content = str
 
       let ToastClass = Vue.extend(Toast)
+      console.log(options)
       let toastComponent = new ToastClass({
         el: document.createElement('div'),
         propsData: options,

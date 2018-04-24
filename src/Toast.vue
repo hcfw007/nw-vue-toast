@@ -22,7 +22,7 @@ export default {
     },
     time: {
       type: Number,
-      default: 3000,
+      default: 30000,
     },
     showAnimation: {
       type: String,
@@ -31,7 +31,13 @@ export default {
     removeAnimation: {
       type: String,
       default: 'fade-out'
-    }
+    },
+    customeCss: {
+      type: Object,
+      default() {
+        return {}
+      }
+    },
   },
   beforeMount() {
     let container = document.querySelector('.toast')
@@ -41,6 +47,9 @@ export default {
       document.body.appendChild(container)
     }
     this.$el.style.opacity = 0
+    for (let i in this.customeCss) {
+      this.$el.style[i] = this.customeCss[i]
+    }
     container.appendChild(this.$el)
   },
   mounted() {
@@ -91,6 +100,9 @@ export default {
         top: this.position.indexOf('top') > -1,
         bottom: this.position.indexOf('bottom') > -1,
         center: this.position.indexOf('center') > -1,
+        left: this.position.indexOf('left') > -1,
+        right: this.position.indexOf('right') > -1,
+        middle: this.position.indexOf('middle') > -1,
       }
       return t
     },
@@ -107,17 +119,20 @@ export default {
   bottom: 0
   position: absolute
   background-color: transparent
-  text-align: center
+  align-items: center
+  justify-content: center
   z-index: -1
 .toast-body
   margin: auto
-  border: solid 1px black
   border-radius: 15px
   font-size: 14px
-  color: black
+  color: #ffffff
+  background-color: #c0c0c0 
   padding: 10px 20px
   position: absolute
   width: 20%
+  text-align: center
+  z-index: 999
   &.center
     left: 0
     right: 0
@@ -128,9 +143,11 @@ export default {
     left: 50%
     right: 0
   &.bottom
-    bottom: 15%
+    bottom: 100px
   &.top
-    top: 15%
+    top: 100px
+  &.middle
+    top: 45%
   &.fade-in
     animation fade-in 1s
   &.fade-out
