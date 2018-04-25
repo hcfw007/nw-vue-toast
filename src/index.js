@@ -10,6 +10,21 @@ const DEFAULT = {
 
 const ToastPlugin = {
   install(Vue, options) {
+    let container = document.getElementById('nw-toast-container')
+    if (!container) {
+      container = document.createElement('div')
+      container.id = 'nw-toast-container'
+    }
+    container.style.position = 'absolute'
+    container.style.backgroundColor = 'transparent'
+    container.style.alignItems = 'center'
+    container.style.justifyContent = 'center'
+    container.style.zIndex = '-1'
+    container.style.top = 0
+    container.style.bottom = 0
+    container.style.left = 0
+    container.style.right = 0
+    document.body.appendChild(container)
 
     this.config = DEFAULT
     for (let porperty in options) {
@@ -24,7 +39,7 @@ const ToastPlugin = {
         }
       }
       options.content = str
-
+      
       let ToastClass = Vue.extend(Toast)
       console.log(options)
       let toastComponent = new ToastClass({

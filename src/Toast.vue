@@ -32,7 +32,7 @@ export default {
       type: String,
       default: 'fade-out'
     },
-    customeCss: {
+    customCss: {
       type: Object,
       default() {
         return {}
@@ -40,19 +40,28 @@ export default {
     },
   },
   beforeMount() {
-    let container = document.querySelector('.toast')
+    let container = document.getElementById('nw-toast-container')
     if (!container) {
       container = document.createElement('div')
-      container.className = 'toast'
+      container.id = 'nw-toast-container'
+      container.style.position = 'absolute'
+      container.style.backgroundColor = 'transparent'
+      container.style.alignItems = 'center'
+      container.style.justifyContent = 'center'
+      container.style.zIndex = '-1'
+      container.style.top = 0
+      container.style.bottom = 0
+      container.style.left = 0
+      container.style.right = 0
       document.body.appendChild(container)
     }
     this.$el.style.opacity = 0
-    for (let i in this.customeCss) {
-      this.$el.style[i] = this.customeCss[i]
-    }
     container.appendChild(this.$el)
   },
   mounted() {
+    for (let i in this.customCss) {
+      this.$el.style[i] = this.customCss[i]
+    }
     this.show()
   },
   methods: {
@@ -69,7 +78,7 @@ export default {
       this.$el.addEventListener('animationend', addRemove, false)
     },
     remove() {
-      let container = document.querySelector('.toast')
+      let container = document.getElementById('nw-toast-container')
       this.$el.classList.add(this.removeAnimation)
       console.log(this.$el.classList)
       this.$el.addEventListener('animationend', (e) => {
@@ -111,17 +120,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-.toast
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
-  position: absolute
-  background-color: transparent
-  align-items: center
-  justify-content: center
-  z-index: -1
+<style lang="stylus" scoped>
 .toast-body
   margin: auto
   border-radius: 15px
@@ -147,7 +146,7 @@ export default {
   &.top
     top: 100px
   &.middle
-    top: 45%
+    top: 400px
   &.fade-in
     animation fade-in 1s
   &.fade-out

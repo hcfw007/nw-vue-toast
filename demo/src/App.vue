@@ -18,6 +18,9 @@
     <br>
     <label for="content">content</label>
     <input type="text" v-model="content">
+    <br>
+    <label for="customCss">custom css (in JSON)</label>
+    <textarea name="" id="customCss" cols="30" rows="10" v-model="customCss"></textarea>
   </div>
 </template>
 
@@ -28,12 +31,14 @@ export default {
       horizontalPosition: 'top',
       verticalPosition: 'center',
       content: 'Demo Toast',
+      customCss: '{"font-size": "14px"}',
     }
   },
   methods: {
     show(str, options, type) {
       this.$toast(this.content, {
         position: this.horizontalPosition + ' ' + this.verticalPosition,
+        customCss: JSON.parse(this.customCss)
       })
     }
   }
