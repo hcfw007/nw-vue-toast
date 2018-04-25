@@ -1,5 +1,5 @@
 <template>
-  <div class="toast-body" :class="classObj">
+  <div class="toast-body" :style="styleObj" :class="classObj">
     {{ content }}
   </div>
 </template>
@@ -116,6 +116,31 @@ export default {
       }
       return t
     },
+    styleObj() {
+      let t = {}
+      if (this.position.indexOf('top') > -1) {
+        t.top = '100px'
+      }
+      if (this.position.indexOf('bottom') > -1) {
+        t.bottom = '100px'
+      }
+      if (this.position.indexOf('middle') > -1) {
+        t.top = '400px'
+      }
+      if (this.position.indexOf('left') > -1) {
+        t.left = '0'
+        t.right = '60%'
+      }
+      if (this.position.indexOf('right') > -1) {
+        t.left = '60%'
+        t.right = '0'
+      }
+      if (this.position.indexOf('center') > -1) {
+        t.left = '0'
+        t.right = '0'
+      }
+      return t
+    },
   },
   name: 'Toast',
 }
@@ -133,21 +158,6 @@ export default {
   width: 20%
   text-align: center
   z-index: 999
-  &.center
-    left: 0
-    right: 0
-  &.left
-    left: 0
-    right: 50%
-  &.right
-    left: 50%
-    right: 0
-  &.bottom
-    bottom: 100px
-  &.top
-    top: 100px
-  &.middle
-    top: 400px
   &.fade-in
     animation fade-in 1s
   &.fade-out
