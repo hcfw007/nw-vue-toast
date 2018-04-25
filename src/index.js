@@ -25,13 +25,13 @@ const ToastPlugin = {
     container.style.left = 0
     container.style.right = 0
     document.body.appendChild(container)
-
+    this.container = container
     this.config = DEFAULT
     for (let porperty in options) {
       this.config[property] = options[property]
     }
 
-    Vue.prototype.$toast = function(str, options, force) {
+    Vue.prototype.$toast = (str, options, type) => {
       options = options || {}
       for (let i in this.config) {
         if (!options[i]) {
@@ -39,11 +39,13 @@ const ToastPlugin = {
         }
       }
       options.content = str
+      let componentContainer = document.createElement('div')
+      this.container.appendChild(componentContainer)
       
       let ToastClass = Vue.extend(Toast)
       console.log(options)
       let toastComponent = new ToastClass({
-        el: document.createElement('div'),
+        el: componentContainer,
         propsData: options,
       })
       toastQueue.push(toastComponent)

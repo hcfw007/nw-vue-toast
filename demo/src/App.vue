@@ -2,6 +2,10 @@
   <div class="container">
     <button @click="show({position: 'top center'})">show toast</button>
     <br>
+    <label for="time">time</label>
+    <input type="number" v-model='time'>
+    <span>(ms)</span>
+    <br>
     <label for="horizontal-position">horizontal position</label>
     <select id="horizontal-position" v-model="horizontalPosition">
       <option value="top">top</option>
@@ -32,13 +36,15 @@ export default {
       verticalPosition: 'center',
       content: 'Demo Toast',
       customCss: '{"font-size": "14px"}',
+      time: 3000,
     }
   },
   methods: {
     show(str, options, type) {
       this.$toast(this.content, {
         position: this.horizontalPosition + ' ' + this.verticalPosition,
-        customCss: JSON.parse(this.customCss)
+        customCss: JSON.parse(this.customCss),
+        time: parseInt(this.time),
       })
     }
   }

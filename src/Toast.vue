@@ -22,7 +22,7 @@ export default {
     },
     time: {
       type: Number,
-      default: 30000,
+      default: 3000,
     },
     showAnimation: {
       type: String,
@@ -40,23 +40,23 @@ export default {
     },
   },
   beforeMount() {
-    let container = document.getElementById('nw-toast-container')
-    if (!container) {
-      container = document.createElement('div')
-      container.id = 'nw-toast-container'
-      container.style.position = 'absolute'
-      container.style.backgroundColor = 'transparent'
-      container.style.alignItems = 'center'
-      container.style.justifyContent = 'center'
-      container.style.zIndex = '-1'
-      container.style.top = 0
-      container.style.bottom = 0
-      container.style.left = 0
-      container.style.right = 0
-      document.body.appendChild(container)
-    }
+    // let container = document.getElementById('nw-toast-container')
+    // if (!container) {
+    //   container = document.createElement('div')
+    //   container.id = 'nw-toast-container'
+    //   container.style.position = 'absolute'
+    //   container.style.backgroundColor = 'transparent'
+    //   container.style.alignItems = 'center'
+    //   container.style.justifyContent = 'center'
+    //   container.style.zIndex = '-1'
+    //   container.style.top = 0
+    //   container.style.bottom = 0
+    //   container.style.left = 0
+    //   container.style.right = 0
+    //   document.body.appendChild(container)
+    // }
     this.$el.style.opacity = 0
-    container.appendChild(this.$el)
+    //container.appendChild(this.$el)
   },
   mounted() {
     for (let i in this.customCss) {
@@ -83,6 +83,7 @@ export default {
       console.log(this.$el.classList)
       this.$el.addEventListener('animationend', (e) => {
         if (e.type == 'animationend') {
+          this.$destroy(this) //to trigger Vue destroy method to remove all hooks and listeners 
           container.removeChild(this.$el)
         }
       })
