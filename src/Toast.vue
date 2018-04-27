@@ -38,31 +38,40 @@ export default {
         return {}
       }
     },
+    afterRemoved: {
+      type: Function,
+      default: undefined,
+    },
+    displayMethod: {
+      type: String,
+      default: "default"
+    }
   },
   beforeMount() {
-    // let container = document.getElementById('nw-toast-container')
-    // if (!container) {
-    //   container = document.createElement('div')
-    //   container.id = 'nw-toast-container'
-    //   container.style.position = 'absolute'
-    //   container.style.backgroundColor = 'transparent'
-    //   container.style.alignItems = 'center'
-    //   container.style.justifyContent = 'center'
-    //   container.style.zIndex = '-1'
-    //   container.style.top = 0
-    //   container.style.bottom = 0
-    //   container.style.left = 0
-    //   container.style.right = 0
-    //   document.body.appendChild(container)
-    // }
     this.$el.style.opacity = 0
-    //container.appendChild(this.$el)
   },
   mounted() {
     for (let i in this.customCss) {
       this.$el.style[i] = this.customCss[i]
     }
+    if (!this.customCss.top && !this.customCss.bottom && this.displayMethod == 'default') {
+      let classSelector = '.toast-body.' + this.position.split(" ").join(".")
+      let siblings = document.querySelectorAll(classSelector)
+      for (let i = 0; i < siblings.length; i++) {
+        if (siblings[i] != this.$el && parseInt(siblings[i].style.top) == parseInt(this.$el.style.top)) {
+          this.$el.style.top = parseInt(this.$el.style.top) + 50 + "px"
+        }
+        if (siblings[i] != this.$el && parseInt(siblings[i].style.bottom) == parseInt(this.$el.style.bottom)) {
+          this.$el.style.bottom = parseInt(this.$el.style.bottom) + 50 + "px"
+        }
+      }
+    }
     this.show()
+  },
+  destroyed() {
+    if (this.afterRemoved) {
+      this.afterRemoved()
+    }
   },
   methods: {
     show() {

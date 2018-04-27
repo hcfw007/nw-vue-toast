@@ -1,6 +1,5 @@
 import Toast from './Toast.vue'
 
-var toastQueue = []
 const DEFAULT = {
   position: 'bottom center',
   time: 3000,
@@ -43,12 +42,10 @@ const ToastPlugin = {
       this.container.appendChild(componentContainer)
       
       let ToastClass = Vue.extend(Toast)
-      console.log(options)
       let toastComponent = new ToastClass({
         el: componentContainer,
         propsData: options,
       })
-      toastQueue.push(toastComponent)
     }
 
   }

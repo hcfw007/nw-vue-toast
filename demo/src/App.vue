@@ -45,6 +45,9 @@ export default {
         position: this.horizontalPosition + ' ' + this.verticalPosition,
         customCss: JSON.parse(this.customCss),
         time: parseInt(this.time),
+        afterRemoved: function() {
+          console.log('callback')
+        },
       })
     }
   }
