@@ -25,6 +25,21 @@
     <br>
     <label for="customCss">custom css (in JSON)</label>
     <textarea name="" id="customCss" cols="30" rows="10" v-model="customCss"></textarea>
+    <br>
+    <label for="showAnimation">animation when display</label>
+    <select name="" id="showAnimation" v-model="showAnimation">
+      <option value="none">none</option>
+      <option value="fade-in">fade-in</option>
+    </select>
+    <br>
+    <label for="removeAnimation">animation when removed</label>
+    <select name="" id="removeAnimation" v-model="removeAnimation">
+      <option value="none">none</option>
+      <option value="fade-out">fade-out</option>
+    </select>
+    <br>
+    <label for="afterRemoved">callback to run after removed</label>
+    <textarea name="" id="afterRemoved" cols="30" rows="10" v-model="afterRemoved"></textarea>
   </div>
 </template>
 
@@ -37,6 +52,9 @@ export default {
       content: 'Demo Toast',
       customCss: '{"font-size": "14px"}',
       time: 3000,
+      showAnimation: "none",
+      removeAnimation: "none",
+      afterRemoved: "console.log('callback')",
     }
   },
   methods: {
@@ -45,9 +63,11 @@ export default {
         position: this.horizontalPosition + ' ' + this.verticalPosition,
         customCss: JSON.parse(this.customCss),
         time: parseInt(this.time),
-        afterRemoved: function() {
-          console.log('callback')
-        },
+        showAnimation: this.showAnimation,
+        removeAnimation: this.removeAnimation,
+        afterRemoved: eval(`() => {
+          ${ this.afterRemoved }
+        }`),
       })
     }
   }

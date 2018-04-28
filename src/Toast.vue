@@ -47,10 +47,8 @@ export default {
       default: "default"
     }
   },
-  beforeMount() {
-    this.$el.style.opacity = 0
-  },
   mounted() {
+    this.$el.style.opacity = 0
     for (let i in this.customCss) {
       this.$el.style[i] = this.customCss[i]
     }
@@ -70,32 +68,47 @@ export default {
   },
   destroyed() {
     if (this.afterRemoved) {
-      this.afterRemoved()
+      try {
+        this.afterRemoved()
+      } catch (error) {
+        console.log(error)
+      }
     }
   },
   methods: {
-    show() {
-      this.$el.classList.add(this.showAnimation)
-      let addRemove = (e) => {
-        if (e.type == 'animationend') {
-          this.$el.removeEventListener('animationend', addRemove, false)
-          this.timeoutCounter = setTimeout(() => {
-            this.remove()
-          }, this.time)
+    show() {//TODO use pure CSS to handle animation might be a bad idea. e.g. if custom css contains opacity it won't work
+      if (this.showAnimation != "none") {
+        this.$el.classList.add(this.showAnimation)
+        let addRemove = (e) => {
+          if (e.type == 'animationend') {
+            this.$el.removeEventListener('animationend', addRemove, false)
+            this.timeoutCounter = setTimeout(() => {
+              this.remove()
+            }, this.time)
+          }
         }
+        this.$el.addEventListener('animationend', addRemove, false)
+      } else {
+        this.$el.style.opacity = 1
+        this.timeoutCounter = setTimeout(() => {
+          this.remove()
+        }, this.time)
       }
-      this.$el.addEventListener('animationend', addRemove, false)
     },
     remove() {
       let container = document.getElementById('nw-toast-container')
-      this.$el.classList.add(this.removeAnimation)
-      console.log(this.$el.classList)
-      this.$el.addEventListener('animationend', (e) => {
-        if (e.type == 'animationend') {
-          this.$destroy(this) //to trigger Vue destroy method to remove all hooks and listeners 
-          container.removeChild(this.$el)
-        }
-      })
+      if (this.removeAnimation != "none") {
+        this.$el.classList.add(this.removeAnimation)
+        this.$el.addEventListener('animationend', (e) => {
+          if (e.type == 'animationend') {
+            this.$destroy(this) //to trigger Vue destroy method to remove all hooks and listeners 
+            container.removeChild(this.$el)
+          }
+        })
+      } else {
+        this.$destroy(this)
+        container.removeChild(this.$el)
+      }
     },
     changeContent(content) {
       this.content = content
@@ -168,7 +181,7 @@ export default {
   text-align: center
   z-index: 999
   &.fade-in
-    animation fade-in 1s
+    animation fade-in 100s
   &.fade-out
     animation fade-out 1s
 
