@@ -48,6 +48,7 @@ export default {
     }
   },
   mounted() {
+    //TODO abstract the function of adding animation to allow custom animation and opacity/position related css
     this.$el.style.opacity = 0
     for (let i in this.customCss) {
       this.$el.style[i] = this.customCss[i]
@@ -95,7 +96,7 @@ export default {
         }, this.time)
       }
     },
-    remove() {
+    remove() {//TODO reconstruct to seperate the function of remove and animation
       let container = document.getElementById('nw-toast-container')
       if (this.removeAnimation != "none") {
         this.$el.classList.add(this.removeAnimation)
@@ -181,7 +182,7 @@ export default {
   text-align: center
   z-index: 999
   &.fade-in
-    animation fade-in 100s
+    animation fade-in 1s
   &.fade-out
     animation fade-out 1s
 
