@@ -49,7 +49,7 @@ export default {
   },
   mounted() {
     //TODO abstract the function of adding animation to allow custom animation and opacity/position related css
-    this.$el.style.opacity = 0
+    //this.$el.style.opacity = 0
     for (let i in this.customCss) {
       this.$el.style[i] = this.customCss[i]
     }
@@ -77,7 +77,8 @@ export default {
     }
   },
   methods: {
-    show() {//TODO use pure CSS to handle animation might be a bad idea. e.g. if custom css contains opacity it won't work
+    show() {
+      //After some research using JS to control CSS keyframe is too complicated. it will be handled later if necerrary. so far if one need to modify opacitv they should use RBGA to control background-color
       if (this.showAnimation != "none") {
         this.$el.classList.add(this.showAnimation)
         let addRemove = (e) => {
@@ -96,7 +97,7 @@ export default {
         }, this.time)
       }
     },
-    remove() {//TODO reconstruct to seperate the function of remove and animation
+    remove() {
       let container = document.getElementById('nw-toast-container')
       if (this.removeAnimation != "none") {
         this.$el.classList.add(this.removeAnimation)
@@ -185,20 +186,29 @@ export default {
     animation fade-in 1s
   &.fade-out
     animation fade-out 1s
+  &.fly-in-left
+    animation fly-in-left 2s
 
 @keyframes fade-in
   0%
-    opacity: 0
+    opacity 0
   50%
-    opacity: 0.5
+    opacity 0.5
   100%
-    opacity: 1
+    opacity 1
 @keyframes fade-out
   0%
-    opacity: 1
+    opacity 1
   50%
-    opacity: 0.5
+    opacity 0.5
   100%
-    opacity: 0
+    opacity 0
+@keyframes fly-in-left
+  0%
+    left -1000px
+  50%
+    left -500px
+  100%
+    left 0
 </style>
 

@@ -30,6 +30,7 @@
     <select name="" id="showAnimation" v-model="showAnimation">
       <option value="none">none</option>
       <option value="fade-in">fade-in</option>
+      <option value="fly-in-left">fly-in-left</option>
     </select>
     <br>
     <label for="removeAnimation">animation when removed</label>
