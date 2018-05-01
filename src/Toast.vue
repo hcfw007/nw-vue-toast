@@ -84,6 +84,7 @@ export default {
         let addRemove = (e) => {
           if (e.type == 'animationend') {
             this.$el.removeEventListener('animationend', addRemove, false)
+            this.$el.classList.remove(this.showAnimation)
             this.timeoutCounter = setTimeout(() => {
               this.remove()
             }, this.time)
@@ -192,23 +193,17 @@ export default {
 @keyframes fade-in
   0%
     opacity 0
-  50%
-    opacity 0.5
   100%
-    opacity 1
+    opacity default
 @keyframes fade-out
   0%
-    opacity 1
-  50%
-    opacity 0.5
+    opacity default
   100%
     opacity 0
 @keyframes fly-in-left
   0%
     left -1000px
-  50%
-    left -500px
   100%
-    left 0
+    left default
 </style>
 
