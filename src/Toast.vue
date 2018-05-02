@@ -1,6 +1,5 @@
 <template>
-  <div class="toast-body" :style="styleObj" :class="classObj">
-    {{ content }}
+  <div class="toast-body" :style="styleObj" :class="classObj" v-html='content'>
   </div>
 </template>
 
@@ -48,8 +47,6 @@ export default {
     }
   },
   mounted() {
-    //TODO abstract the function of adding animation to allow custom animation and opacity/position related css
-    //this.$el.style.opacity = 0
     for (let i in this.customCss) {
       this.$el.style[i] = this.customCss[i]
     }
@@ -78,7 +75,6 @@ export default {
   },
   methods: {
     show() {
-      //After some research using JS to control CSS keyframe is too complicated. it will be handled later if necerrary. so far if one need to modify opacitv they should use RBGA to control background-color
       if (this.showAnimation != "none") {
         this.$el.classList.add(this.showAnimation)
         let addRemove = (e) => {
