@@ -31,12 +31,19 @@
       <option value="none">none</option>
       <option value="fade-in">fade-in</option>
       <option value="fly-in-left">fly-in-left</option>
+      <option value="fly-in-right">fly-in-right</option>
+      <option value="fly-in-top">fly-in-top</option>
+      <option value="fly-in-bottom">fly-in-bottom</option>
     </select>
     <br>
     <label for="removeAnimation">animation when removed</label>
     <select name="" id="removeAnimation" v-model="removeAnimation">
       <option value="none">none</option>
       <option value="fade-out">fade-out</option>
+      <option value="fly-out-left">fly-out-left</option>
+      <option value="fly-out-right">fly-out-right</option>
+      <option value="fly-out-top">fly-out-top</option>
+      <option value="fly-out-bottom">fly-out-bottom</option>
     </select>
     <br>
     <label for="afterRemoved">callback to run after removed</label>

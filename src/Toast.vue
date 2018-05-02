@@ -184,26 +184,35 @@ export default {
   text-align: center
   z-index: 999
   &.fade-in
-    animation fade-in 1s
+    animation: fade-in 1s
   &.fade-out
-    animation fade-out 1s
-  &.fly-in-left
-    animation fly-in-left 2s
+    animation: fade-out 1s
+  for direction in left right top bottom
+    &.fly-in-{direction}
+      animation: fly-in- + direction 2s
+    &.fly-out-{direction}
+      animation: fly-out- + direction 2s
 
 @keyframes fade-in
   0%
-    opacity 0
+    opacity: 0
   100%
-    opacity default
+    opacity: default
 @keyframes fade-out
   0%
-    opacity default
+    opacity: default
   100%
-    opacity 0
-@keyframes fly-in-left
-  0%
-    left -1000px
-  100%
-    left default
+    opacity: 0
+for direction in left right top bottom
+  @keyframes fly-in-{direction}
+    0%
+      {direction}: -150%
+    100%
+      {direction}: default
+  @keyframes fly-out-{direction}
+    0%
+      {direction}: default
+    100%
+      {direction}: -150%
 </style>
 
