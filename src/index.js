@@ -23,6 +23,7 @@ const ToastPlugin = {
     container.style.bottom = 0
     container.style.left = 0
     container.style.right = 0
+    container.style.overflow = 'hidden'
     document.body.appendChild(container)
     this.container = container
     this.config = DEFAULT
