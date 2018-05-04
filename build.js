@@ -24,6 +24,6 @@ const webpackConfig = {
       },
     ]
   },
-  mode: "development",
+  mode: "production",
 }
 webpack(webpackConfig).run()
