@@ -7,7 +7,7 @@ const DEFAULT = {
   removeAnimation: 'fade-out',
 }
 
-const ToastPlugin = {
+const toastPlugin = {
   install(Vue, options) {
     let container = document.getElementById('nw-toast-container')
     if (!container) {
@@ -52,4 +52,4 @@ const ToastPlugin = {
   }
 }
 
-export default ToastPlugin
+export default toastPlugin
