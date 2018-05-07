@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <button @click="show({position: 'top center'})">show toast</button>
+    <button @click="changeText()">change text</button>
     <br>
     <label for="time">time</label>
     <input type="number" v-model='time'>
@@ -63,11 +64,12 @@ export default {
       showAnimation: "none",
       removeAnimation: "none",
       afterRemoved: "console.log('callback')",
+      toasts: [],
     }
   },
   methods: {
     show(str, options, type) {
-      this.$toast(this.content, {
+      this.toasts.push(this.$toast(this.content, {
         position: this.horizontalPosition + ' ' + this.verticalPosition,
         customCss: JSON.parse(this.customCss),
         time: parseInt(this.time),
@@ -76,6 +78,11 @@ export default {
         afterRemoved: eval(`() => {
           ${ this.afterRemoved }
         }`),
+      }))
+    },
+    changeText() {
+      this.toasts.forEach(toast => {
+        toast.changeContent('content changed!')
       })
     }
   }

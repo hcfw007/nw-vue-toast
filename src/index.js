@@ -47,6 +47,8 @@ const toastPlugin = {
         el: componentContainer,
         propsData: options,
       })
+
+      return toastComponent
     }
 
   }

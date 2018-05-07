@@ -33,7 +33,7 @@ this.$toast('Test-Toast', {
 $ npm install
 
 # run demo
-$ npm run-script run-demo
+$ npm start
 // visit localhost:8080 to see demo
 
 ```
