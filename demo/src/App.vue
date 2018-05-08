@@ -2,6 +2,7 @@
   <div class="container">
     <button @click="show({position: 'top center'})">show toast</button>
     <button @click="changeText()">change text</button>
+    <button @click="shake()">shake it!</button>
     <br>
     <label for="time">time</label>
     <input type="number" v-model='time'>
@@ -83,6 +84,11 @@ export default {
     changeText() {
       this.toasts.forEach(toast => {
         toast.changeContent('content changed!')
+      })
+    },
+    shake() {
+      this.toasts.forEach(toast => {
+        toast.shake()
       })
     }
   }

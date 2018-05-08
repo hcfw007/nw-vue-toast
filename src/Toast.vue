@@ -124,6 +124,33 @@ export default {
         this.remove()
       }, this.time)
     },
+    shake(times = 40) {
+      let originTop = parseInt(this.$el.style.top)
+      let originLeft = parseInt(this.$el.style.left)
+      let originBottom = parseInt(this.$el.style.bottom)
+      let _shake = (timer) => {
+        if (timer <= 0) {
+          if (originTop != NaN) {
+            this.$el.style.top = originTop + 'px'
+          } else {
+            this.$el.style.bottom = originBottom + 'px'
+          }
+          this.$el.style.left = this.originLeft
+          return
+        }
+        let horizontalOffset = Math.floor(Math.random() * 21) - 10
+        let verticalOffert = Math.floor(Math.random() * 11) - 5
+        if (originTop != NaN) {
+          this.$el.style.top = originTop + verticalOffert + 'px'
+        } else {
+          this.$el.style.bottom = originBottom + verticalOffert + 'px'
+        }
+        this.$el.style.left = originLeft + horizontalOffset + 'px'
+        timer --
+        setTimeout(() => {_shake(timer)}, 1000 / times)
+      }
+      _shake(times)
+    },
   },
   computed: {
     classObj() {
