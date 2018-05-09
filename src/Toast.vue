@@ -135,7 +135,7 @@ export default {
           } else {
             this.$el.style.bottom = originBottom + 'px'
           }
-          this.$el.style.left = this.originLeft
+          this.$el.style.left = originLeft + 'px'
           return
         }
         let horizontalOffset = Math.floor(Math.random() * 21) - 10

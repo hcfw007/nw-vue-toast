@@ -25,6 +25,17 @@ this.$toast('Test-Toast', {
 ```
 ## more options to be added
 
+## methods
+```javascript
+toast = this.$toast('Test-Toast')
+toast.shake(n)  //Toast will virerate n times in 1 seoconds. By default n = 40
+toast.cancelTimeout() //Toast will not disappear until automatically
+toast.setNewTime(n) //Set a new timer for the toast in ms
+toast.remove() //Toast will be removed (and the animation you choose still works)
+toast.setContent(str) //Change content for the toast
+
+```
+
 # build on your own
 
 ```bash
