@@ -44,7 +44,11 @@ export default {
     displayMethod: {
       type: String,
       default: "default"
-    }
+    },
+    customeClass: {
+      type: String,
+      default: "",
+    },
   },
   mounted() {
     for (let i in this.customCss) {
@@ -161,6 +165,11 @@ export default {
         left: this.position.indexOf('left') > -1,
         right: this.position.indexOf('right') > -1,
         middle: this.position.indexOf('middle') > -1,
+      }
+      let customClassStr = this.customeClass
+      let customClasses = customClassStr.split[' ']
+      for (let i in customClasses) {
+        t[customClasses[i]] = true
       }
       return t
     },
