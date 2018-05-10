@@ -23,15 +23,17 @@ this.$toast('Test-Toast'[, options]}) // options here will apply to only this to
 | time | duration of the toast in ms | Integer | 3000 |
 | showAnimation | animation when the toast appers[2] | String | 'fade-in' |
 | removeAnimation | animation when the toast disappears[3] | String | 'fade-out' |
-| customCss | your own css in json-object | Object | null |
-| customClass | classes to be assign to the toast[4] | String | "" |
+| customCss | your own css in json-object[4] | Object | null |
+| customClass | classes to be assign to the toast[5] | String | "" |
 | afterRemoved | callback after the toast disappears | Function | null |
 
 [1] Built in position = choose one from ['top', 'bottom', 'middle'] and another one from ['left', 'center', 'right'], eg. 'top center'. You can also pass empty string and define position in customCss
 <br>
 [2][3] Built in showAnimation including ['fade-in', 'fly-in-left', 'fly-in-right', 'fly-in-top', 'fly-in-bottom']; Built in showAnimation including ['fade-out', 'fly-out-left', 'fly-out-right', 'fly-out-top', 'fly-out-bottom']
 <br>
-[4] eg. "toast-class1 toast-class2"
+[4] eg. {'background-color': 'black', 'color': 'white'}
+<br>
+[5] eg. "toast-class1 toast-class2"
 
 ## methods
 ```javascript
