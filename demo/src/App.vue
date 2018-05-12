@@ -28,6 +28,9 @@
     <label for="customCss">custom css (in JSON)</label>
     <textarea name="" id="customCss" cols="30" rows="10" v-model="customCss"></textarea>
     <br>
+    <label for="customClass">custom class (in String)</label>
+    <input type="text" v-model="customClass">
+    <br>
     <label for="showAnimation">animation when display</label>
     <select name="" id="showAnimation" v-model="showAnimation">
       <option value="none">none</option>
@@ -64,6 +67,7 @@ export default {
       time: 3000,
       showAnimation: "none",
       removeAnimation: "none",
+      customClass: "class1 class2",
       afterRemoved: "console.log('callback')",
       toasts: [],
     }
@@ -73,6 +77,7 @@ export default {
       this.toasts.push(this.$toast(this.content, {
         position: this.horizontalPosition + ' ' + this.verticalPosition,
         customCss: JSON.parse(this.customCss),
+        customClass: this.customClass,
         time: parseInt(this.time),
         showAnimation: this.showAnimation,
         removeAnimation: this.removeAnimation,

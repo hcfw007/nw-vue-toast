@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import ToastPlugin from '../../dist/nw-vue-toast'
+import ToastPlugin from '../../src/index.js'
 
 console.log(ToastPlugin)
 

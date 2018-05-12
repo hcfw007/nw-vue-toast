@@ -45,7 +45,7 @@ export default {
       type: String,
       default: "default"
     },
-    customeClass: {
+    customClass: {
       type: String,
       default: "",
     },
@@ -166,8 +166,8 @@ export default {
         right: this.position.indexOf('right') > -1,
         middle: this.position.indexOf('middle') > -1,
       }
-      let customClassStr = this.customeClass
-      let customClasses = customClassStr.split[' ']
+      let customClassStr = this.customClass
+      let customClasses = customClassStr.split(' ')
       for (let i in customClasses) {
         t[customClasses[i]] = true
       }

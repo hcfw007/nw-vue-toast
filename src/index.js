@@ -41,7 +41,7 @@ const toastPlugin = {
       options.content = str
       let componentContainer = document.createElement('div')
       this.container.appendChild(componentContainer)
-      
+      console.log(options)
       let ToastClass = Vue.extend(Toast)
       let toastComponent = new ToastClass({
         el: componentContainer,
