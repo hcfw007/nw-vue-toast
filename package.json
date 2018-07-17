@@ -2,8 +2,8 @@
   "name": "nw-vue-toast",
   "version": "0.2.1",
   "description": "toast plugin for vue",
-  "main": "dist/nw-vue-toast.js",
-  "module": "src/index.js",
+  "main": "src/index.js",
+  "module": "dist/nw-vue-toast.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node demo/run-demo.js",
