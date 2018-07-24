@@ -1,6 +1,6 @@
 {
   "name": "nw-vue-toast",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "toast plugin for vue",
   "main": "src/index.js",
   "module": "dist/nw-vue-toast.js",
@@ -27,6 +27,7 @@
     "css-loader": "^1.0.0",
     "stylus-loader": "^3.0.2",
     "vue-loader": "^15.2.6",
+    "vue-style-loader": "^4.1.1",
     "vue-template-compiler": "^2.5.16"
   }
 }
