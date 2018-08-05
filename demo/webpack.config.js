@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   entry: {
@@ -13,6 +14,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin([path.resolve(__dirname, 'dist')]),
+    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       title: 'Toast Demo',
       template: path.resolve(__dirname, 'src/index.html'),
@@ -28,7 +30,15 @@ module.exports = {
       {
         test: /\.vue$/,
         use: 'vue-loader',
-      }
+      },
+      {
+        test: /\.styl(us)$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'stylus-loader',
+        ],
+      },
     ]
   },
   mode: "development"
