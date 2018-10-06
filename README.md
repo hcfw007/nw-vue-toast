@@ -9,7 +9,7 @@ $ npm install --S nw-vue-toast
 ## import
 ```javascript
 import ToastPlugin from 'nw-vue-toast'
-Vue.use(Toast[, options]) // options here will apply to all toasts
+Vue.use(ToastPlugin[, options]) // options here will apply to all toasts
 ```
 ## use in component
 ```javascript
