@@ -9,11 +9,10 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
+    contentBase: '/',
     hot: true,
   },
   plugins: [
-    new CleanWebpackPlugin([path.resolve(__dirname, 'dist')]),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       title: 'Toast Demo',
@@ -32,13 +31,12 @@ module.exports = {
         use: 'vue-loader',
       },
       {
-        test: /\.styl(us)$/,
-        use: [
+        test: /\.css$/,
+        loader: [
           'vue-style-loader',
-          'css-loader',
-          'stylus-loader',
-        ],
-      },
+          'css-loader'
+        ]
+      }
     ]
   },
   mode: "development"
