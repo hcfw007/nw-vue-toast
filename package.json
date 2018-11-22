@@ -1,6 +1,6 @@
 {
   "name": "nw-vue-toast",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "toast plugin for vue",
   "main": "src/index.js",
   "module": "dist/nw-vue-toast.js",
