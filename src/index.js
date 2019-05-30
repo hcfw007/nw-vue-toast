@@ -27,7 +27,7 @@ const toastPlugin = {
     document.body.appendChild(container)
     this.container = container
     this.config = DEFAULT
-    for (let porperty in options) {
+    for (let property in options) {
       this.config[property] = options[property]
     }
 
@@ -41,7 +41,6 @@ const toastPlugin = {
       options.content = str
       let componentContainer = document.createElement('div')
       this.container.appendChild(componentContainer)
-      console.log(options)
       let ToastClass = Vue.extend(Toast)
       let toastComponent = new ToastClass({
         el: componentContainer,
