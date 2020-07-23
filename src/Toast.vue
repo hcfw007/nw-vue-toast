@@ -59,10 +59,10 @@ export default {
       let siblings = document.querySelectorAll(classSelector)
       for (let i = 0; i < siblings.length; i++) {
         if (siblings[i] != this.$el && parseInt(siblings[i].style.top) == parseInt(this.$el.style.top)) {
-          this.$el.style.top = parseInt(this.$el.style.top) + 50 + "px"
+          this.$el.style.top = parseInt(this.$el.style.top) + 20 + siblings[i].offsetHeight + "px"
         }
         if (siblings[i] != this.$el && parseInt(siblings[i].style.bottom) == parseInt(this.$el.style.bottom)) {
-          this.$el.style.bottom = parseInt(this.$el.style.bottom) + 50 + "px"
+          this.$el.style.bottom = parseInt(this.$el.style.bottom) + 20 + siblings[i].offsetHeight + "px"
         }
       }
     }
